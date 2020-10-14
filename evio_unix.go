@@ -362,10 +362,6 @@ func loopOpened(s *server, l *loop, c *conn) error {
 	}
 	if len(c.out) == 0 && c.action == None {
 		l.poll.ModRead(c.fd)
-		// 完成写入数据
-		if s.events.WriteFinish != nil {
-			s.events.WriteFinish(c)
-		}
 	}
 	return nil
 }
